@@ -1,0 +1,122 @@
+.food-card{
+    display: flex;
+
+    background-color: rgb(42, 85, 62);
+}
+.description{
+   margin: 0.8em;
+}
+.description p{
+    font-family: Geneva, Tahoma, sans-serif;
+    font-size: 1.2em;
+    color: blanchedalmond;
+}
+.description a{
+    text-decoration: none;
+    font-family: Geneva, Tahoma, sans-serif;
+    font-size: 1.2em;
+    color: azure;
+}
+.addToFavs{
+    background-color: rgb(228 198 124);
+    margin: 0.8em;
+    padding: 0.8em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.cuisine-type{
+    display: flex;
+    justify-content: space-between;
+    width: 10%;
+}
+.card-local,.card-local-favorites{
+    background-color: rgb(14, 82, 82);
+    margin: 0.8em;
+    border: 1px solid #000;
+    border-radius: 0.8em;
+    /* height: 50vh; */
+}
+.card-local-inside{
+    margin: 0.8em;
+    
+}
+.card-local-inside h1{
+    /* font-family: ; */
+    font-family: fantasy, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: bisque;
+}
+.cuisine-type p{
+    font-family: cursive;
+    font-size: 1.2em;
+    color: bisque;
+}
+.suggestionBox{
+    position: absolute; 
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid #000;
+    width:95%;
+    background-color: aquamarine;
+    max-height: 25vh;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow:auto;
+    overflow-x:hidden;
+}
+
+.searchContainer{
+    position: relative;
+}
+.searchFormTag{
+    margin-right: 5em;
+}
+.suggestionItems{
+    border-bottom: 1px solid black;
+    font-size: 0.9em;
+    padding: 0.8em;
+}
+.suggestionItems:hover{
+    background-color: rgb(189, 179, 179);
+    cursor: pointer;
+}
+/* menudetailsSection */
+.detailsContainer{
+    display:flex; justify-content: center;position: absolute;top:0;width: 95%; flex-direction: column;align-items: center;z-index: 1;
+}
+.nameFood{
+    display:flex; justify-content: center;position: absolute;top:0;width: 95%; flex-direction: column;align-items: center;z-index: 1;
+}
+.directions{
+    margin-right: 5em;margin-left: 5em; font-size: 25px;
+}
+.ingredients{
+    display: flex; flex-direction: column;
+}
+.quant{
+    font-size: 25px;
+}
+.containerForImg{
+    width: 25%; background-color: rgb(4, 15, 53);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 25%;
+    padding: 1em;
+    border-radius: 0.8em;
+}
+.heading{
+    font-size: 1.5em;
+    color: blanchedalmond;
+}
+.img{
+    width: 50%;
+}
+.favData{
+    display: none;
+}
+.card-local-favorites{
+    display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 4px;
+        background-color: #86b8e0;
+        padding: 10px;}
