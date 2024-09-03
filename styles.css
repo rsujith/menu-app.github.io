@@ -120,3 +120,12 @@
         grid-gap: 4px;
         background-color: #86b8e0;
         padding: 10px;}
+    
+.deleteBtnInFav{
+    width: fit-content;
+    margin: 0.8em;
+    border-radius: 0.8em;
+    background-color: #cd2c2c;
+    color: antiquewhite;
+    font-family: fantasy;
+}

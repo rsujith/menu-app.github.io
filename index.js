@@ -6,6 +6,7 @@ const mainTag = document.querySelector('.indexData')
 const favData = document.querySelector('.favData')
 const foodDetailsSection = document.querySelector('.card-local')
 const navLink = document.querySelectorAll('.nav-link')
+let favobj=[]
 // fetching food data
 async function fetchmedetails(foodItem) {
     const itemPromise = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodItem}`)
@@ -44,6 +45,7 @@ function showSugesstion(arrayOfFoodItems) {
     }
 
 }
+
 // getting food details for that particular item
 async function getParticularFoodItem(nameOfFood) {
     const foodItemPromise = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${nameOfFood}`)
@@ -88,19 +90,14 @@ function showFullFoodDetails(foodItem) {
     foodDetailsSection.innerHTML = bodyOfFood
     // adding event listener to fav button
     addToFavs = document.querySelector('.addToFavs')
-
+    
     addToFavs.addEventListener('click', function () {
-        const cardlocalfavorites = document.querySelector('.card-local-favorites')
-        const containerForImg = document.createElement('div')
-        containerForImg.classList.add('containerForImg')
-        const heading = document.createElement('h1')
-        heading.classList.add('heading')
-        heading.textContent = arrForMenuDetails.strMeal
-        const img = document.createElement('img')
-        img.classList.add('img')
-        img.setAttribute('src', arrForMenuDetails.strMealThumb)
-        containerForImg.append(heading, img)
-        cardlocalfavorites.appendChild(containerForImg)
+        favobj.push({
+            nameOfFood:arrForMenuDetails.strMeal,
+            imgTag:arrForMenuDetails.strMealThumb
+        })
+        console.log(favobj)
+        localStorage.setItem('favObj', JSON.stringify(favobj))
         alert('added to favorites')
     })
 
@@ -125,6 +122,32 @@ Array.from(navLink).forEach((ele) => {
         else {
             mainTag.style.display = 'none'
             favData.style.display = 'block'
+            const favDataAr = JSON.parse(localStorage.getItem('favObj'));
+            favDataAr.forEach((ele,ind)=>{
+                const cardlocalfavorites = document.querySelector('.card-local-favorites')
+        const containerForImg = document.createElement('div')
+        const deleteBtn=document.createElement('button')
+        deleteBtn.textContent="Remove"
+        deleteBtn.classList.add('deleteBtnInFav')
+        containerForImg.classList.add('containerForImg')
+        const heading = document.createElement('h1')
+        heading.classList.add('heading')
+        heading.textContent = ele.nameOfFood
+        const img = document.createElement('img')
+        img.classList.add('img')
+        img.setAttribute('src', ele.imgTag)
+        containerForImg.append(heading, img,deleteBtn)
+        cardlocalfavorites.appendChild(containerForImg)
+        
+        deleteBtn.addEventListener('click',()=>{
+            console.log(ind)
+            containerForImg.remove()
+            console.log(favDataAr.splice(ind,1))
+            console.log(favDataAr)
+            localStorage.setItem('favObj', JSON.stringify(favDataAr))
+        })
+            })
         }
     })
 })
+// localStorage.clear()
